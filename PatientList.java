@@ -43,6 +43,40 @@ class PatientList { //Linked list
         System.out.println("Patient with Name " + name + " not found.");
     }
 
+    public void sortByName(){
+        if (head == null || head.next == null) {
+            System.out.println("Not enough patients to sort.");
+            return;
+        }
+        
+        Patient current, index;
+        String tempName, tempDis;
+        int tempId, tempAge;
+        
+        for (current = head; current.next != null; current = current.next) {
+            for (index = head; index.next != null; index = index.next) {
+                if (index.name.compareToIgnoreCase(index.next.name) > 0) {
+                    // Swap patient details
+                    tempId = index.id;
+                    tempName = index.name;
+                    tempAge = index.age;
+                    tempDis = index.disease;
+                    
+                    index.id = index.next.id;
+                    index.name = index.next.name;
+                    index.age = index.next.age;
+                    index.disease = index.next.disease;
+                    
+                    index.next.id = tempId;
+                    index.next.name = tempName;
+                    index.next.age = tempAge;
+                    index.next.disease = tempDis;
+                }
+            }
+        }
+        System.out.println("Patients sorted by name successfully!");
+}
+
     public void displayPatients() {
         if (head == null) {
             System.out.println("No patients found.");

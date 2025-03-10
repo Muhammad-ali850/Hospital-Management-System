@@ -12,9 +12,10 @@ public class HospitalManagementSys {
             System.out.println("1- Add Patient"); //permanent record of patients
             System.out.println("2- Display Patients");
             System.out.println("3- Search Patient");
-            System.out.println("4- Add Appointment"); //temporary scheduling
-            System.out.println("5- Process Appointment");
-            System.out.println("6- Exit");
+            System.out.println("4- Sort Patients by Name"); //Bubble Sort
+            System.out.println("5- Add Appointment"); //temporary scheduling
+            System.out.println("6- Process Appointment");
+            System.out.println("7- Exit");
             System.out.print("Enter your choice: ");
             
             int choice = s.nextInt();
@@ -41,6 +42,9 @@ public class HospitalManagementSys {
                     patientList.searchPatient(name2);
                     break;
                 case 4:
+                    patientList.sortByName();
+                    break;
+                case 5:
                     System.out.print("Enter Patient ID: ");
                     int id2 = s.nextInt();
                     System.out.print("Enter Name: ");
@@ -52,12 +56,11 @@ public class HospitalManagementSys {
 
                     appointmentQueue.addAppointment(id2, name3, age2, disease2);
                     break;
-                case 5:
+                case 6:
                     appointmentQueue.processAppointment();
                     break;
-                case 6:
+                case 7:
                     System.out.println("Exiting system....");
-                    s.close();
                     return;
                 default:
                     System.out.println("Invalid choice. Try again.");
